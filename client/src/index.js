@@ -4,10 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 1. Import drizzle, @drizzle/react-plugin, and your contract artifacts.
+import { Drizzle, generateStore } from "@drizzle/store";
+import { DrizzleContext } from "@drizzle/react-plugin";
+import Hello from "./artifacts/Hello.json";
+
+// 2. Setup the drizzle instance.
+const options = { contracts: [Hello] };
+const drizzleStore = generateStore(options);
+const drizzle = new Drizzle(options, drizzleStore);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <DrizzleContext.Provider drizzle= {drizzle}>
+      <App />
+    </DrizzleContext.Provider>
   </React.StrictMode>
 );
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
-contract helloworld {
+contract Hello {
     string text= "Hello World!";
 
   function set(string memory _text) public{

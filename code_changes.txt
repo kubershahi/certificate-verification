@@ -1,0 +1,35 @@
+path: ./truffle-config.js
+truffle-config.js - Inside module.exports function
+  contracts_build_directory: './client/src/artifacts/',
+
+path: client/node_modules/react-scripts/config/webpack.config.js
+line 314
+fallback: {
+        "stream": require.resolve("stream-browserify"),
+        "crypto": require.resolve("crypto-browserify"), 
+        "assert": require.resolve("assert"),
+        "http": require.resolve("stream-http"),
+        "https": require.resolve("https-browserify"),
+        "url": require.resolve("url/"),
+        "os": require.resolve("os-browserify/browser")
+      },
+
+client dependencies
+"dependencies": {
+    "@drizzle/react-plugin": "^1.5.3",
+    "@drizzle/store": "^1.5.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.0",
+    "@testing-library/user-event": "^13.5.0",
+    "assert": "^2.0.0",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0",
+    "web-vitals": "^2.1.4"
+  },

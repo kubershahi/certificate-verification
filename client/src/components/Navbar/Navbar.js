@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.scss'
 import {images} from '../../constants'
+import { BrowserRouter as Router, Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="app__navbar">
@@ -9,7 +10,7 @@ function Navbar() {
         <p>CertVerif</p>
       </div>
       <ul className="app__navbar-links">
-        {['home', 'about','contact','login'].map((item) => (
+        {['home', 'upload','verify','share','login'].map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
             <a href={`/${item}`}>{item}</a>

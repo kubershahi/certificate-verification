@@ -1,5 +1,5 @@
 import hashlib
-path = './certificates/user4@alumni.ashoka.edu.in.pdf''
+path = './certificates/user4@alumni.ashoka.edu.in.pdf'
 
 h = hashlib.sha3_256()
 with open(path, 'rb') as f:

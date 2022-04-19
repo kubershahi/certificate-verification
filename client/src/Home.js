@@ -1,5 +1,5 @@
 import './Home.scss';
-
+import { BrowserRouter as Switch, Route} from 'react-router-dom';
 import React from 'react'
 import {About, Footer, Header} from './container';
 import {Navbar} from './components'
@@ -8,8 +8,12 @@ function Home() {
     <>
     <div className='app'>
         <Navbar/>
-        <Header/>
-        <About/>
+        <Switch>
+          <Route path="/home">
+            <Header/>
+            <About/>
+          </Route>
+        </Switch>
         <Footer/>
     </div>
     </>

@@ -1,6 +1,7 @@
 import React from 'react'
 import './Verify.scss'
 import {images} from "../../constants" 
+import TextField from '@mui/material/TextField';
 function Login() {
   return (
 <div className="app__header app__flex">
@@ -13,7 +14,7 @@ function Login() {
         </div>
 
         <div className="tag-cmp app__flex">
-          <p className="p-text">See below</p>
+          <TextField fullWidth label="fullWidth" id="fullWidth" />
         </div>
       </div>
    

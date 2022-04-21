@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 
-function Login() {
+function Upload() {
   return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
@@ -29,7 +29,7 @@ function Login() {
               id="outlined-basic"
               label="Batch"
               type="text"
-            />Í
+            />
             <br></br>
             <br></br>
             <label> <h3>Choose the File to upload: </h3></label>
@@ -50,4 +50,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Upload

@@ -3,10 +3,17 @@ import './Upload.scss'
 import {images} from "../../constants" 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+// const Input = styled('input')({
+//   display: 'none',
+// });
+
+
 function Login() {
   return (
 <div className="app__header app__flex">
-      <div className="app__header-badge">
+  <div className="app__header-badge">
         <div className="badge-cmp app__flex">
           <div style={{ marginLeft: 20 }}>
             <p className="p-text">Save you credentials forever.</p>
@@ -14,52 +21,41 @@ function Login() {
           </div>
         </div>
 
-        <div className="tag-cmp app__flex">
-      <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
+      <div className="tag-cmp">
+        <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+        }}
+        >
+
         <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Hello World"
+          id="outlined-basic"
+          label="Name"
+          type="text"
         />
+    
         <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
+          id="outlined-basic"
+          label="Batch"
+          type="text"
         />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField id="outlined-search" label="Search field" type="search" />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-        />
+        <br></br>
+        <br></br>
+        <label> <h3>Choose the File to upload: </h3></label>
+        <Input type="file" id="myFile" />
+        <br></br>
+        <br></br>
+        <Button type="submit" variant="contained">Submit</Button>
+        </Box>
+        
       </div>
-    </Box>
-        </div>
-      </div>
+    </div>
    
 
-      <img src={images.node} alt="profile_bg" />
+    <img src={images.node} alt="profile_bg" />
 
-
+        
   </div>
   )
 }

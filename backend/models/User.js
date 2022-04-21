@@ -12,7 +12,7 @@ const userSchema = new Schema({
     deployed: { type: Boolean, default: false },
     deployedDate: { type: Date, default: 1/1/1990},
   }
-})
+}, {strict: false})
 
 // export the user model from the module
 module.exports = mongoose.model('User', userSchema)

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Upload.scss'
 import { images } from "../../constants"
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';

@@ -1,23 +1,18 @@
 const mongoose = require('mongoose')
-const schema = mongoose.Schema
+const Schema = mongoose.Schema
 
 // for login: username, password, and refreshToken should be added
 const userSchema = new Schema({
   name: { type: String, required: true},
-  role: { type: String, enum: ['admin', 'institution', 'user', 'verifier']},
+  role: { type: String, enum: ['Admin', 'Institution', 'User', 'Verifier']},
   certificates: {
-    batch: String,
-    level: String,
-    certificate: Array,
-    merkleRoot: String,
-    deployed: Boolean,
-    deployedDate: Date,
+    batch: { type: Schema.Types.Mixed, default: null},
+    certificate: { type:Array},
+    merkleRoot: { type:String, default: null },
+    deployed: { type: Boolean, default: false },
+    deployedDate: { type: Date, default: 1/1/1990},
   }
-
 })
-
-const test = mongoose.model('User', userSchema)
-console.log( (new test).certificates)
 
 // export the user model from the module
 module.exports = mongoose.model('User', userSchema)

@@ -3,6 +3,7 @@ const express = require("express");
 const userModel = require("../models/User");
 const app = express();
 const cors = require("cors");
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -23,6 +24,7 @@ app.post("/certificates/upload", async (request, response) => {
   try {
     await user.save();
     response.send(user);
+    responses.status(200).send("Uploaded Successfully")
   } catch (error) {
     response.status(500).send(error);
   }
@@ -34,6 +36,7 @@ app.patch("/certificates/update/:id", async (request, response) => {
     await userModel.findByIdAndUpdate(request.params.id, request.body);
     await userModel.save();
     response.send(user);
+    response.status(200).send("Record updated successfully.")
   } catch (error) {
     response.status(500).send(error);
   }
@@ -45,7 +48,17 @@ app.delete("/certificates/delete/:id", async (request, response) => {
     const certificate = await userModel.findByIdAndDelete(request.params.id);
 
     if (!certificate) response.status(404).send("No item found");
-    response.status(200).send();
+    response.status(200).send("Record deleted successfully.");
+  } catch (error) {
+    console.log(error)
+    response.status(500).send(error);
+  }
+});
+
+app.delete("/certificates/delete/", async (request, response) => {
+  try {
+    await userModel.deleteMany({});
+    response.status(200).send("All info deleted succesfully.");
   } catch (error) {
     console.log(error)
     response.status(500).send(error);

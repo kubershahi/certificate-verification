@@ -23,8 +23,7 @@ app.post("/certificates/upload", async (request, response) => {
   const user = new userModel(request.body);
   try {
     await user.save();
-    response.send(user);
-    responses.status(200).send("Uploaded Successfully")
+    response.status(200).send("Uploaded Successfully")
   } catch (error) {
     response.status(500).send(error);
   }
@@ -35,7 +34,6 @@ app.patch("/certificates/update/:id", async (request, response) => {
     console.log(request.params)
     await userModel.findByIdAndUpdate(request.params.id, request.body);
     await userModel.save();
-    response.send(user);
     response.status(200).send("Record updated successfully.")
   } catch (error) {
     response.status(500).send(error);

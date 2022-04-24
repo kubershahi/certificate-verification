@@ -14,7 +14,6 @@ function Upload() {
 
   let name, value;
   const handleInputs = (e) => {
-    console.log(e)
     name = e.target.name;
     value = e.target.value;
 
@@ -25,8 +24,6 @@ function Upload() {
     e.preventDefault();
 
     const { name, batch , certificate } = user
-    console.log(typeof(name))
-    console.log(batch)
     axios.post("http://localhost:4000/certificates/upload", {name,batch,certificate})
       .then(res=>{
         console.log(res);

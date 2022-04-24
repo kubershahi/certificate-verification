@@ -19,7 +19,6 @@ app.get("/certificates", async (request, response) => {
 });
 
 app.post("/certificates/upload", async (request, response) => {
-  console.log(request)
   const user = new userModel(request.body);
   try {
     await user.save();

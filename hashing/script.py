@@ -30,6 +30,6 @@ for root, subdirs, files in os.walk(source_dir):
       print('Error: make sure you only have certificates in the directory.')
 
 with open('data.json', 'w', encoding='utf-8') as fout:
-    json.dump(certificate, fout, ensure_ascii=False, indent=4)
+    json.dump(certificate, fout, ensure_ascii=False)
 
 fout.close()

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Upload.scss'
 import { images } from "../../constants"
 // import Box from '@mui/material/Box';
@@ -7,7 +7,25 @@ import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 
 function Upload() {
-  return (
+
+  const [user,setUser] = useState({
+    name:"", batch:""
+  })
+
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e)
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({...user, [name]: value})
+  }
+
+  const PostData = async () => {
+
+  }
+
+    return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
         <div className="badge-cmp app__flex">
@@ -22,13 +40,19 @@ function Upload() {
             <TextField
               id="outlined-basic"
               label="Name"
+              name = "name"
               type="text"
+              value={user.name}
+              onChange={handleInputs}
             />
 
             <TextField
               id="outlined-basic"
               label="Batch"
+              name = "batch"
               type="text"
+              value={user.batch}
+              onChange={handleInputs}
             />
             <br></br>
             <br></br>
@@ -36,7 +60,7 @@ function Upload() {
             <Input type="file" id="myFile" />
             <br></br>
             <br></br>
-            <Button type="submit" variant="contained">Submit</Button>
+            <Button type="submit" variant="contained" onClick={PostData}>Submit</Button>
           </form>
 
         </div>

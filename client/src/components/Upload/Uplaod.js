@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './Upload.scss'
 import { images } from "../../constants"
 // import Box from '@mui/material/Box';
@@ -8,24 +8,34 @@ import Input from '@mui/material/Input';
 import axios from 'axios';
 function Upload() {
 
-  const [user,setUser] = useState({
-    name:"", batch:"", certificate: []
+  const [user, setUser] = useState({
+    name: "", batch: "", certificate:""
   })
 
-  let name, value;
+  let name, value, certificate;
   const handleInputs = (e) => {
     name = e.target.name;
     value = e.target.value;
+    setUser({ ...user, [name]: value })
+  }
 
-    setUser({...user, [name]: value})
+  const handleCert = (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    setUser({ ...user, certificate: e.target.result})
+    console.log(typeof(e.target.result))
+    };
+    reader.readAsText(file);
+
   }
 
   const PostData = async (e) => {
     e.preventDefault();
 
-    const { name, batch , certificate } = user
-    axios.post("http://localhost:4000/certificates/upload", {name,batch,certificate})
-      .then(res=>{
+    const { name, batch, certificate } = user
+    axios.post("http://localhost:4000/certificates/upload", { name, batch, certificate })
+      .then(res => {
         console.log(res);
       })
       .catch(error => {
@@ -33,7 +43,7 @@ function Upload() {
       })
   }
 
-    return (
+  return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
         <div className="badge-cmp app__flex">
@@ -48,7 +58,7 @@ function Upload() {
             <TextField
               id="outlined-basic"
               label="Name"
-              name = "name"
+              name="name"
               type="text"
               value={user.name}
               onChange={handleInputs}
@@ -57,7 +67,7 @@ function Upload() {
             <TextField
               id="outlined-basic"
               label="Batch"
-              name = "batch"
+              name="batch"
               type="text"
               value={user.batch}
               onChange={handleInputs}
@@ -65,7 +75,7 @@ function Upload() {
             <br></br>
             <br></br>
             <label> <h3>Choose the File to upload: </h3></label>
-            <Input type="file" id="myFile" />
+            <Input type="file" name="certificate" id="myFile" onChange={handleCert} />
             <br></br>
             <br></br>
             <Button type="submit" variant="contained" onClick={PostData}>Submit</Button>

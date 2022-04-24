@@ -24,9 +24,10 @@ function Upload() {
   const PostData = async (e) => {
     e.preventDefault();
 
-    // const { name, batch , certificate } = user
-
-    axios.post("/certificates/upload", {user})
+    const { name, batch , certificate } = user
+    console.log(typeof(name))
+    console.log(batch)
+    axios.post("http://localhost:4000/certificates/upload", {name,batch,certificate})
       .then(res=>{
         console.log(res);
       })

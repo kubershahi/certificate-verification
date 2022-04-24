@@ -2,6 +2,12 @@
 const express = require("express");
 const userModel = require("../models/User");
 const app = express();
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+)
 
 app.get("/certificates", async (request, response) => {
   const user = await userModel.find({});

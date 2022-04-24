@@ -5,11 +5,11 @@ import { images } from "../../constants"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
-
+import axios from 'axios';
 function Upload() {
 
   const [user,setUser] = useState({
-    name:"", batch:""
+    name:"", batch:"", certificate: []
   })
 
   let name, value;
@@ -21,8 +21,18 @@ function Upload() {
     setUser({...user, [name]: value})
   }
 
-  const PostData = async () => {
+  const PostData = async (e) => {
+    e.preventDefault();
 
+    // const { name, batch , certificate } = user
+
+    axios.post("/certificates/upload", {user})
+      .then(res=>{
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
     return (

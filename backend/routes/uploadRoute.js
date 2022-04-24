@@ -13,6 +13,7 @@ app.get("/certificates", async (request, response) => {
 });
 
 app.post("/certificates/upload", async (request, response) => {
+  console.log(request)
   const user = new userModel(request.body);
   try {
     await user.save();
@@ -27,7 +28,7 @@ app.patch("/certificates/update/:id", async (request, response) => {
     console.log(request.params)
     await userModel.findByIdAndUpdate(request.params.id, request.body);
     await userModel.save();
-    response.send(food);
+    response.send(user);
   } catch (error) {
     response.status(500).send(error);
   }

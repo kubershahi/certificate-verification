@@ -23,8 +23,29 @@ function Upload() {
 		setUser({ ...user, [name]: value });
 	};
 
+    let cert_length=0
+    const { MerkleTree } = require('merkletreejs')
+    const SHA256 = require('crypto-js/sha256')
+    let leaves_arr =[]
 	const merkleTree = (cert) => {
-		console.log(cert)
+		console.log(typeof(cert))
+        cert_length = Object.keys(cert).length
+        
+        for (let i = 0; i < cert_length; i++){
+            leaves_arr.push(cert[i]["hash"])
+        }
+            const leaves = leaves_arr.map(x => SHA256(x))
+            const tree = new MerkleTree(leaves, SHA256)
+            const root = tree.getRoot().toString('hex')
+
+        for (let i = 0; i < cert_length; i++){
+            const leaf = SHA256(cert[i]["hash"])
+            const proof = tree.getProof(leaf)
+            cert[i]["proof"] = proof 
+        }
+            console.log(cert)
+            // console.log(tree.verify(proof, leaf, root)) // true
+
 		return{
 			
 

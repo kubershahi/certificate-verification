@@ -3330,7 +3330,7 @@
   "resolved" "https://registry.npmjs.org/big.js/-/big.js-5.2.2.tgz"
   "version" "5.2.2"
 
-"bignumber.js@^9.0.0":
+"bignumber.js@^9.0.0", "bignumber.js@^9.0.1":
   "integrity" "sha512-GAcQvbpsM0pUb0zw1EI0KhQEZ+lRwR5fYaAp3vPOYuP7aDvGy6cVN6XHLauvF8SOga2y0dcLcjt3iQDTSEliyw=="
   "resolved" "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.0.2.tgz"
   "version" "9.0.2"
@@ -3345,7 +3345,7 @@
   "resolved" "https://registry.npmjs.org/blakejs/-/blakejs-1.2.1.tgz"
   "version" "1.2.1"
 
-"bluebird@^3.5.0", "bluebird@^3.5.1", "bluebird@^3.5.5":
+"bluebird@^3.5.0", "bluebird@^3.5.5":
   "integrity" "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="
   "resolved" "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
   "version" "3.7.2"
@@ -3533,6 +3533,11 @@
   "integrity" "sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ=="
   "resolved" "https://registry.npmjs.org/buffer-from/-/buffer-from-1.1.2.tgz"
   "version" "1.1.2"
+
+"buffer-reverse@^1.0.1":
+  "integrity" "sha1-SSg8jvpvkBvAH6MwTQYCeXGuL2A="
+  "resolved" "https://registry.npmjs.org/buffer-reverse/-/buffer-reverse-1.0.1.tgz"
+  "version" "1.0.1"
 
 "buffer-to-arraybuffer@^0.0.5":
   "integrity" "sha1-YGSkD6dutDxyOrqe+PbhIW0QURo="
@@ -4188,6 +4193,11 @@
     "randombytes" "^2.0.0"
     "randomfill" "^1.0.3"
 
+"crypto-js@^3.1.9-1":
+  "integrity" "sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q=="
+  "resolved" "https://registry.npmjs.org/crypto-js/-/crypto-js-3.3.0.tgz"
+  "version" "3.3.0"
+
 "crypto-random-string@^2.0.0":
   "integrity" "sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA=="
   "resolved" "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz"
@@ -4418,15 +4428,6 @@
   "integrity" "sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.11.tgz"
   "version" "3.0.11"
-
-"csvtojson@^2.0.10":
-  "integrity" "sha512-lUWFxGKyhraKCW8Qghz6Z0f2l/PqB1W3AO0HKJzGIQ5JRSlR651ekJDiGJbBT4sRNNv5ddnSGVEnsxP9XRCVpQ=="
-  "resolved" "https://registry.npmjs.org/csvtojson/-/csvtojson-2.0.10.tgz"
-  "version" "2.0.10"
-  dependencies:
-    "bluebird" "^3.5.1"
-    "lodash" "^4.17.3"
-    "strip-bom" "^2.0.0"
 
 "d@^1.0.1", "d@1":
   "integrity" "sha512-m62ShEObQ39CfralilEQRjH6oAMtNCV1xJyEx5LpRYUVN+EviphDgUc/F3hnYbADmkiNs67Y+3ylmlG7Lnu+FA=="
@@ -5834,11 +5835,6 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fs@^0.0.1-security":
-  "integrity" "sha1-invTcYa23d84E/I4WLV+yq9eQdQ="
-  "resolved" "https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz"
-  "version" "0.0.1-security"
-
 "fsevents@^2.3.2", "fsevents@~2.3.2":
   "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
   "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
@@ -6845,11 +6841,6 @@
   "resolved" "https://registry.npmjs.org/is-typedarray/-/is-typedarray-1.0.0.tgz"
   "version" "1.0.0"
 
-"is-utf8@^0.2.0":
-  "integrity" "sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI="
-  "resolved" "https://registry.npmjs.org/is-utf8/-/is-utf8-0.2.1.tgz"
-  "version" "0.2.1"
-
 "is-weakref@^1.0.2":
   "integrity" "sha512-qctsuLZmIQ0+vSSMfoVvyFe2+GSEvnmZ2ezTup1SBse9+twCCeial6EEi3Nc2KFcf6+qz2FBPnjXsk8xhKSaPQ=="
   "resolved" "https://registry.npmjs.org/is-weakref/-/is-weakref-1.0.2.tgz"
@@ -7703,7 +7694,7 @@
   "resolved" "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
   "version" "4.5.0"
 
-"lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.20", "lodash@^4.17.21", "lodash@^4.17.3", "lodash@^4.7.0", "lodash@~4.17.10":
+"lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.20", "lodash@^4.17.21", "lodash@^4.7.0", "lodash@~4.17.10":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -7865,6 +7856,17 @@
   "integrity" "sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg=="
   "resolved" "https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz"
   "version" "1.4.1"
+
+"merkletreejs@^0.2.31":
+  "integrity" "sha512-dnK2sE43OebmMe5Qnq1wXvvMIjZjm1u6CcB2KeW6cghlN4p21OpCUr2p56KTVf20KJItNChVsGnimcscp9f+yw=="
+  "resolved" "https://registry.npmjs.org/merkletreejs/-/merkletreejs-0.2.31.tgz"
+  "version" "0.2.31"
+  dependencies:
+    "bignumber.js" "^9.0.1"
+    "buffer-reverse" "^1.0.1"
+    "crypto-js" "^3.1.9-1"
+    "treeify" "^1.1.0"
+    "web3-utils" "^1.3.4"
 
 "methods@~1.1.2":
   "integrity" "sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4="
@@ -10841,13 +10843,6 @@
   dependencies:
     "ansi-regex" "^6.0.1"
 
-"strip-bom@^2.0.0":
-  "integrity" "sha1-YhmoVhZSBJHzV4i9vxRHqZx+aw4="
-  "resolved" "https://registry.npmjs.org/strip-bom/-/strip-bom-2.0.0.tgz"
-  "version" "2.0.0"
-  dependencies:
-    "is-utf8" "^0.2.0"
-
 "strip-bom@^3.0.0":
   "integrity" "sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM="
   "resolved" "https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz"
@@ -11243,6 +11238,11 @@
   "version" "2.1.0"
   dependencies:
     "punycode" "^2.1.1"
+
+"treeify@^1.1.0":
+  "integrity" "sha512-1m4RA7xVAJrSGrrXGs0L3YTwyvBs2S8PbRHaLZAkFw7JR8oIFwYtysxlBZhYIa7xSyiYJKZ3iGrrk55cGA3i9A=="
+  "resolved" "https://registry.npmjs.org/treeify/-/treeify-1.1.0.tgz"
+  "version" "1.1.0"
 
 "trim-newlines@^3.0.0":
   "integrity" "sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw=="
@@ -11873,7 +11873,7 @@
     "web3-core-subscriptions" "1.7.3"
     "web3-net" "1.7.3"
 
-"web3-utils@1.7.3":
+"web3-utils@^1.3.4", "web3-utils@1.7.3":
   "integrity" "sha512-g6nQgvb/bUpVUIxJE+ezVN+rYwYmlFyMvMIRSuqpi1dk6ApDD00YNArrk7sPcZnjvxOJ76813Xs2vIN2rgh4lg=="
   "resolved" "https://registry.npmjs.org/web3-utils/-/web3-utils-1.7.3.tgz"
   "version" "1.7.3"

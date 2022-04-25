@@ -13,6 +13,7 @@ function Upload() {
 		name: "",
 		batch: "",
 		certificate: [],
+		merkleRoot:"",
 	});
 
 	let name, value, cert;
@@ -26,9 +27,9 @@ function Upload() {
     let cert_length=0
     const { MerkleTree } = require('merkletreejs')
     const SHA256 = require('crypto-js/sha256')
+
     let leaves_arr =[]
 	const merkleTree = (cert) => {
-		console.log(typeof(cert))
         cert_length = Object.keys(cert).length
         
         for (let i = 0; i < cert_length; i++){
@@ -37,11 +38,12 @@ function Upload() {
             const leaves = leaves_arr.map(x => SHA256(x))
             const tree = new MerkleTree(leaves, SHA256)
             const root = tree.getRoot().toString('hex')
+			setUser({ ...user, merkleRoot: root})
 
         for (let i = 0; i < cert_length; i++){
             const leaf = SHA256(cert[i]["hash"])
             const proof = tree.getProof(leaf)
-            cert[i]["proof"] = proof 
+            cert[i]["proof"]= proof
         }
             console.log("certificate",cert)
             setUser({ ...user, certificate: cert })
@@ -65,12 +67,13 @@ function Upload() {
 	const PostData = async (e) => {
 		e.preventDefault();
 
-		const { name, batch, certificate } = user;
+		const { name, batch, certificate, merkleRoot } = user;
 		axios
 			.post("http://localhost:4000/certificates/upload", {
 				name,
 				batch,
 				certificate,
+				merkleRoot,
 			})
 			.then((res) => {
 				console.log(res);

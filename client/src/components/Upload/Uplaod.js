@@ -43,12 +43,11 @@ function Upload() {
             const proof = tree.getProof(leaf)
             cert[i]["proof"] = proof 
         }
-            console.log(cert)
+            console.log("certificate",cert)
+            setUser({ ...user, certificate: cert })
             // console.log(tree.verify(proof, leaf, root)) // true
 
 		return{
-			
-
 		}
 	}
 

@@ -7,109 +7,112 @@ import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import axios from "axios";
 
-
 function Upload() {
-    const [user, setUser] = useState({
-        name: "",
-        batch: "",
-        certificate: [],
-    });
 
-    let name, value, certificate;
-    const handleInputs = (e) => {
-        name = e.target.name;
-        value = e.target.value;
-        setUser({ ...user, [name]: value });
-    };
+	const [user, setUser] = useState({
+		name: "",
+		batch: "",
+		certificate: [],
+	});
 
-    const merkleRoot = (certificate) => {
+	let name, value, cert;
 
-    }
+	const handleInputs = (e) => {
+		name = e.target.name;
+		value = e.target.value;
+		setUser({ ...user, [name]: value });
+	};
 
-    const handleCert = (e) => {
+	const merkleTree = (cert) => {
+		console.log(cert)
+		return{
+			
 
-        const fileReader = new FileReader();
-        fileReader.readAsText(e.target.files[0], "UTF-8");
-        fileReader.onload = (e) => {
-            certificate = JSON.parse(e.target.result)
-            // setUser({ ...user, certificate: certificate })
-        };
-        console.log(certificate)
-        merkleRoot(certificate)
+		}
+	}
 
-    };
+	const handleCert = (e) => {
 
-    const PostData = async (e) => {
-        e.preventDefault();
+		const fileReader = new FileReader();
+		fileReader.readAsText(e.target.files[0], "UTF-8");
+		fileReader.onload = (e) => {
+			cert = JSON.parse(e.target.result)
+			const [merkleRoot, certProof] = merkleTree(cert)
+			// setUser({ ...user, certificate: certificate })
+		};
+	};
 
-        const { name, batch, certificate } = user;
-        axios
-            .post("http://localhost:4000/certificates/upload", {
-                name,
-                batch,
-                certificate,
-            })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+	const PostData = async (e) => {
+		e.preventDefault();
 
-    return (
-        <div className="app__header app__flex">
-            <div className="app__header-badge">
-                <div className="badge-cmp app__flex">
-                    <div style={{ marginLeft: 20 }}>
-                        <p className="p-text">Save you credentials forever.</p>
-                        <h1 className="head-texter">Upload them here!</h1>
-                    </div>
-                </div>
-                <div className="tag-cmp">
-                    <form>
-                        <TextField id="outlined-basic"
-                            label="Name"
-                            name="name"
-                            type="text"
-                            value={user.name}
-                            onChange={handleInputs}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            label="Batch"
-                            name="batch"
-                            type="text"
-                            value={user.batch}
-                            onChange={handleInputs}
-                        />
-                        <br></br>
-                        <br></br>
-                        <label>
-                            {" "}
-                            <h3>Choose the File to upload: </h3>
-                        </label>
-                        <Input
-                            type="file"
-                            name="certificate"
-                            id="myFile"
-                            onChange={handleCert}
-                        />
-                        <br></br>
-                        <br></br>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            onClick={PostData}
-                        >
-                            Submit
-                        </Button>
-                    </form>
-                </div>
-            </div>
-            <img src={images.node} alt="profile_bg" />
-        </div>
-    );
+		const { name, batch, certificate } = user;
+		axios
+			.post("http://localhost:4000/certificates/upload", {
+				name,
+				batch,
+				certificate,
+			})
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
+	return (
+		<div className="app__header app__flex">
+			<div className="app__header-badge">
+				<div className="badge-cmp app__flex">
+					<div style={{ marginLeft: 20 }}>
+						<p className="p-text">Save you credentials forever.</p>
+						<h1 className="head-texter">Upload them here!</h1>
+					</div>
+				</div>
+				<div className="tag-cmp">
+					<form>
+						<TextField id="outlined-basic"
+							label="Name"
+							name="name"
+							type="text"
+							value={user.name}
+							onChange={handleInputs}
+						/>
+						<TextField
+							id="outlined-basic"
+							label="Batch"
+							name="batch"
+							type="text"
+							value={user.batch}
+							onChange={handleInputs}
+						/>
+						<br></br>
+						<br></br>
+						<label>
+							{" "}
+							<h3>Choose the File to upload: </h3>
+						</label>
+						<Input
+							type="file"
+							name="certificate"
+							id="myFile"
+							onChange={handleCert}
+						/>
+						<br></br>
+						<br></br>
+						<Button
+							type="submit"
+							variant="contained"
+							onClick={PostData}
+						>
+							Submit
+						</Button>
+					</form>
+				</div>
+			</div>
+			<img src={images.node} alt="profile_bg" />
+		</div>
+	);
 }
 
 export default Upload;

@@ -6,9 +6,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import axios from "axios";
-import MerkleTree from 'merkletreejs';
 import SHA256 from 'crypto-js/sha256';
-
+import merkletree, { verifyProof } from 'merkletree'
 function Upload() {
 
   const [user, setUser] = useState({
@@ -27,27 +26,28 @@ function Upload() {
   };
 
   let cert_length = 0
-  let leaves_arr = []
+  var leaves = []
 
   const merkleTree = (cert) => {
     cert_length = Object.keys(cert).length
 
     for (let i = 0; i < cert_length; i++) {
-      leaves_arr.push(cert[i]["hash"])
+      leaves.push(cert[i]["hash"])
     }
-    const leaves = leaves_arr.map(x => SHA256(x))
-    const tree = new MerkleTree(leaves, SHA256)
-    console.log("tree",tree)
-    console.log("type of ", typeof(tree))
-    var root = tree.getRoot().toString('hex')
+    //making leaves order
+    leaves.reverse()
+
+    const tree = merkletree(leaves)
+    var root = tree.root()
 
     for (let i = 0; i < cert_length; i++) {
-      const leaf = SHA256(cert[i]["hash"])
-      const proof = tree.getProof(leaf)
-      cert[i]["proof"] = proof
+      cert[i]["proof"] = tree.proof(leaves[i])
     }
-    // console.log(tree.verify(proof, leaf, root)) // true
+    console.log("leaf",leaves)
+    console.log("leaf",cert[0]["hash"])
 
+    const verified = verifyProof(cert[2]["hash"],root,cert[2]["proof"])
+    console.log(verified)
     return [cert, root]
   }
 

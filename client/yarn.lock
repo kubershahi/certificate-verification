@@ -7857,6 +7857,11 @@
   "resolved" "https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz"
   "version" "1.4.1"
 
+"merkletree@^1.5.0":
+  "integrity" "sha1-AWvRINdanBxnWMTfL6isBaNNG3U="
+  "resolved" "https://registry.npmjs.org/merkletree/-/merkletree-1.5.0.tgz"
+  "version" "1.5.0"
+
 "merkletreejs@^0.2.31":
   "integrity" "sha512-dnK2sE43OebmMe5Qnq1wXvvMIjZjm1u6CcB2KeW6cghlN4p21OpCUr2p56KTVf20KJItNChVsGnimcscp9f+yw=="
   "resolved" "https://registry.npmjs.org/merkletreejs/-/merkletreejs-0.2.31.tgz"

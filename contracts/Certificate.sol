@@ -27,8 +27,20 @@ contract certificate {
         return owner;
     }
 
-    function addRoot(string memory batch, string memory root) public isOwner {
-        merkleRoot[batch] = root;
+    function addRoot(string memory batch, string memory root)
+        public
+        returns (string memory)
+    {
+        string memory s;
+        if (bytes(merkleRoot[batch]).length == 0) {
+            merkleRoot[batch] = root;
+            s = "merkleRoot Added";
+        } else {
+            delete merkleRoot[batch];
+            merkleRoot[batch] = root;
+            s = "merkleRoot Added";
+        }
+        return s;
     }
 
     function verifyRoot(string memory batch, string memory root)

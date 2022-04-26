@@ -11,10 +11,10 @@ import merkletree, { verifyProof } from 'merkletree'
 function Upload() {
 
   const [user, setUser] = useState({
-    name: " ",
-    batch: " ",
+    name: "",
+    batch: "",
     certificate: [],
-    merkleRoot: " ",
+    merkleRoot: "",
   });
 
   let name, value;
@@ -109,7 +109,6 @@ function Upload() {
             <br></br>
             <br></br>
             <label>
-              {" "}
               <h3>Choose the File to upload: </h3>
             </label>
             <Input

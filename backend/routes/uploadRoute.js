@@ -19,6 +19,19 @@ app.get("/certificates", async (request, response) => {
   }
 });
 
+// 
+app.get("/getCertificate/", async (request, response) => {
+  try {
+    console.log(request.query)
+    const res = await userModel.find(request.query);
+    console.log(res)
+    response.send(res)
+  } catch (error) {
+    response.status(500).send(error);
+  }
+});
+
+// upload a record in the database
 app.post("/certificates/upload", async (request, response) => {
   const user = new userModel(request.body);
   try {
@@ -29,20 +42,9 @@ app.post("/certificates/upload", async (request, response) => {
   }
 });
 
-app.patch("/certificates/update/:id", async (request, response) => {
-  try {
-    console.log(request.params)
-    await userModel.findByIdAndUpdate(request.params.id, request.body);
-    await userModel.save();
-    response.status(200).send("Record updated successfully.")
-  } catch (error) {
-    response.status(500).send(error);
-  }
-});
-
+// delete a particular record
 app.delete("/certificates/delete/:id", async (request, response) => {
   try {
-    console.log(request.params)
     const certificate = await userModel.findByIdAndDelete(request.params.id);
 
     if (!certificate) response.status(404).send("No item found");
@@ -53,6 +55,7 @@ app.delete("/certificates/delete/:id", async (request, response) => {
   }
 });
 
+// delete all the records
 app.delete("/certificates/delete/", async (request, response) => {
   try {
     await userModel.deleteMany({});

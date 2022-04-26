@@ -17,6 +17,8 @@ function Upload() {
     merkleRoot: "",
   });
 
+  const [msg,setMsg] = useState("");
+
   let name, value;
 
   const handleInputs = (e) => {
@@ -43,11 +45,8 @@ function Upload() {
     for (let i = 0; i < cert_length; i++) {
       cert[i]["proof"] = tree.proof(leaves[i])
     }
-    console.log("leaf",leaves)
-    console.log("leaf",cert[0]["hash"])
 
-    const verified = verifyProof(cert[2]["hash"],root,cert[2]["proof"])
-    console.log(verified)
+    // const verified = verifyProof(cert[2]["hash"],root,cert[2]["proof"])
     return [cert, root]
   }
 
@@ -60,6 +59,7 @@ function Upload() {
       setUser({ ...user, certificate: cert, merkleRoot: root })
     };
   };
+
 
   const PostData = async (e) => {
     e.preventDefault();
@@ -78,8 +78,15 @@ function Upload() {
       .catch((error) => {
         console.log(error);
       });
+      setUser({ ...user, name:"", batch:"", certificate:[]})
+      setMsg("Uploaded")
+
   };
 
+  const areFieldsFilled = (user.name != "") && (user.batch != "");
+  const areAllFieldsFilled = (user.certificate != "");
+  console.log(user.certificate)
+  
   return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
@@ -91,7 +98,7 @@ function Upload() {
         </div>
         <div className="tag-cmp">
           <form>
-            <TextField id="outlined-basic"
+            <TextField
               label="Name"
               name="name"
               type="text"
@@ -99,7 +106,6 @@ function Upload() {
               onChange={handleInputs}
             />
             <TextField
-              id="outlined-basic"
               label="Batch"
               name="batch"
               type="text"
@@ -115,6 +121,8 @@ function Upload() {
               type="file"
               name="certificate"
               id="myFile"
+              accept=".json/*"
+              // disabled={!areFieldsFilled}
               onChange={handleCert}
             />
             <br></br>
@@ -122,10 +130,12 @@ function Upload() {
             <Button
               type="submit"
               variant="contained"
+              disabled={!areAllFieldsFilled}
               onClick={PostData}
             >
               Submit
             </Button>
+            {msg}
           </form>
         </div>
       </div>

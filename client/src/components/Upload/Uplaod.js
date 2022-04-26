@@ -37,6 +37,8 @@ function Upload() {
     }
     const leaves = leaves_arr.map(x => SHA256(x))
     const tree = new MerkleTree(leaves, SHA256)
+    console.log("tree",tree)
+    console.log("type of ", typeof(tree))
     var root = tree.getRoot().toString('hex')
 
     for (let i = 0; i < cert_length; i++) {

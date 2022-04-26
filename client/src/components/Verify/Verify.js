@@ -44,8 +44,7 @@ function Login() {
 
     axios.get("http://localhost:4000/getCertificate/", { params: { "name": user.name, "batch": user.batch } })
       .then((response) => {
-        console.log(response.data[0])
-        if ((response.data[0]).length === 0) {
+        if (response.data.length === 0) {
           console.log("Can't Find the certificate.")
         } else {
           let userData = response.data[0]
@@ -67,10 +66,6 @@ function Login() {
       .catch((error) => {
         console.log(error);
       });
-
-
-
-
   }
 
   return (

@@ -16,13 +16,9 @@ export default () => (
   <DrizzleContext.Consumer>
     {drizzleContext => {
       const { drizzle, drizzleState, initialized } = drizzleContext;
-      // if (!initialized) {
-      //   return "Loading...";
-      // }
-
-      // var state = drizzle.store.getState()
-      // console.log("state", state)
-      // console.log("DS", drizzleState)
+      if (!initialized) {
+        return "Loading...";
+      }
       return (
         <BrowserRouter>
           <Router>
@@ -30,7 +26,7 @@ export default () => (
               <Navbar />
               <Switch>
                 <Route exact path="/upload">
-                  <Upload />
+                  <Upload drizzle={drizzle} drizzleState={drizzleState} />
                 </Route>
                 <Route exact path="/verify">
                   <Verify />

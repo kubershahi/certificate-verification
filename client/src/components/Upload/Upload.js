@@ -10,7 +10,11 @@ import { Drizzle } from "@drizzle/store";
 // import { verifyProof } from "merkletree";
 import merkletree from "merkletree";
 
+import { newContextComponents } from "@drizzle/react-components";
+const { AccountData, ContractData, ContractForm } = newContextComponents;
+
 function Upload(props) {
+  const { drizzle, drizzleState } = props
 
   const [user, setUser] = useState({
     name: "",
@@ -20,6 +24,8 @@ function Upload(props) {
   });
 
   const [msg, setMsg] = useState("");
+  const [merkle, setMerkle] = useState("");
+  const [batch_down, setBatch_down] = useState("");
 
   let name, value;
 
@@ -137,8 +143,14 @@ function Upload(props) {
             >
               Submit
             </Button>
+            <br></br>
+            <br></br>
+            
             {msg}
           </form>
+          <div>
+            <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot" />
+          </div>
         </div>
       </div>
       <img src={images.node} alt="profile_bg" />

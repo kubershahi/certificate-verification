@@ -22,9 +22,7 @@ app.get("/certificates", async (request, response) => {
 // 
 app.get("/getCertificate/", async (request, response) => {
   try {
-    console.log(request.query)
     const res = await userModel.find(request.query);
-    console.log(res)
     response.send(res)
   } catch (error) {
     response.status(500).send(error);

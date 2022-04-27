@@ -8,8 +8,8 @@ const userSchema = new Schema({
   batch: { type: Schema.Types.Mixed, default: null },
   certificate: { type: Array },
   merkleRoot: { type: String, default: null },
-  deployed: { type: Boolean, default: false },
-  deployedDate: { type: Date, default: 1 / 1 / 1990 },
+  // deployed: { type: Boolean, default: false },
+  // deployedDate: { type: Date, default: 1 / 1 / 1990 },
 }, { strict: false })
 
 // export the user model from the module

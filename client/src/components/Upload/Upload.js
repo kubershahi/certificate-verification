@@ -6,8 +6,10 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import axios from "axios";
-import SHA256 from 'crypto-js/sha256';
-import merkletree, { verifyProof } from 'merkletree'
+// import SHA256 from 'crypto-js/sha256';
+// import { verifyProof } from "merkletree";
+import merkletree from "merkletree";
+
 function Upload() {
 
   const [user, setUser] = useState({
@@ -62,9 +64,10 @@ function Upload() {
 
 
   const PostData = async (e) => {
-    e.preventDefault();
 
+    e.preventDefault();
     const { name, batch, certificate, merkleRoot } = user;
+
     axios
       .post("http://localhost:4000/certificates/upload", {
         name,
@@ -78,15 +81,13 @@ function Upload() {
       .catch((error) => {
         console.log(error);
       });
-      setUser({ ...user, name:"", batch:"", certificate:[]})
-      setMsg("Uploaded")
+    setUser({ ...user, name:"", batch:"", certificate:[]})
+    setMsg("Uploaded Successfully!")
 
   };
 
-  const areFieldsFilled = (user.name != "") && (user.batch != "");
-  const areAllFieldsFilled = (user.certificate != "");
-  console.log(user.certificate)
-  
+  const areAllFieldsFilled = ((user.certificate.length !== 0) && (user.name !== "") && (user.batch !== "") );
+
   return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
@@ -115,7 +116,7 @@ function Upload() {
             <br></br>
             <br></br>
             <label>
-              <h3>Choose the File to upload: </h3>
+              <h3>Upload your certificates JSON file: </h3>
             </label>
             <Input
               type="file"

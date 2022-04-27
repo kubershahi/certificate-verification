@@ -98,7 +98,7 @@ function Login() {
             <br></br>
             <br></br>
             <label>
-              <h3>Choose your certificate: </h3>
+              <h3>Choose your certificate (pdf): </h3>
             </label>
             <Input
               type="file"

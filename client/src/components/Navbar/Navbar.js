@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="app__navbar">
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo" />
-        <p>CertVerif</p>
+        <p>aCERT</p>
       </div>
       <ul className="app__navbar-links">
         {['home', 'upload','verify','share','login'].map((item) => (

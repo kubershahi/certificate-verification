@@ -4,7 +4,7 @@ import React from 'react'
 import {About, Footer, Header} from './container';
 import {Navbar} from './components'
 import Login from './components/Login/Login';
-import Upload from './components/Upload/Uplaod';
+import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
 

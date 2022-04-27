@@ -1,6 +1,6 @@
-const { Certificate } = require("crypto");
+// const { Certificate } = require("crypto");
 
-const Hello = artifacts.require("Certificate");
+const Certificate = artifacts.require("Certificate");
 
 module.exports = function (deployer) {
   deployer.deploy(Certificate);

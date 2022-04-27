@@ -1,26 +1,26 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.13;
 
-contract certificate {
+contract Certificate {
   address private owner;
   mapping(string => string) private merkleRoot;
 
   event OwnerSet(address indexed oldOwner, address indexed newOwner);
 
   modifier isOwner() {
-      require(msg.sender == owner, "Caller is not owner");
-      _;
+    require(msg.sender == owner, "Caller is not owner");
+    _;
   }
 
   constructor() {
-      // set the contract deployer as the owner
-      owner = msg.sender;
-      emit OwnerSet(address(0), owner); // log the change in the onership
+    // set the contract deployer as the owner
+    owner = msg.sender;
+    emit OwnerSet(address(0), owner); // log the change in the ownership
   }
 
   function changeOwner(address newOwner) public isOwner {
-      emit OwnerSet(owner, newOwner);
-      owner = newOwner;
+    emit OwnerSet(owner, newOwner);
+    owner = newOwner;
   }
 
   function getOwner() external view returns (address) {

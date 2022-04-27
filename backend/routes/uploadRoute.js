@@ -34,7 +34,7 @@ app.post("/certificates/upload", async (request, response) => {
   const user = new userModel(request.body);
   try {
     await user.save();
-    response.status(200).send("Uploaded Successfully")
+    response.status(200).send("Uploaded Successfully.")
   } catch (error) {
     response.status(500).send(error);
   }
@@ -57,7 +57,7 @@ app.delete("/certificates/delete/:id", async (request, response) => {
 app.delete("/certificates/delete/", async (request, response) => {
   try {
     await userModel.deleteMany({});
-    response.status(200).send("All info deleted succesfully.");
+    response.status(200).send("All records deleted succesfully.");
   } catch (error) {
     console.log(error)
     response.status(500).send(error);

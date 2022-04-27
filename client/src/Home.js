@@ -8,7 +8,7 @@ import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
 import { DrizzleContext } from "@drizzle/react-plugin";
-
+import {useEffect} from 'react'
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -16,7 +16,6 @@ export default () => (
   <DrizzleContext.Consumer>
     {drizzleContext => {
       const { drizzle, drizzleState, initialized } = drizzleContext;
-
       // if (!initialized) {
       //   return "Loading...";
       // }

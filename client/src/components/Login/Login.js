@@ -1,10 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Login.scss'
 import { images } from "../../constants"
 
-function Login(drizzle, drizzleState) {
+function Login(drizzle) {
 
-  
+  const loadDataOnlyOnce = () => {
+  console.log("loadDataOnlyOnce");
+  };
+
+  useEffect(() => {
+    if (drizzle) {
+        // do something
+    }
+    }, []);
+
+  if (!drizzle.drizzleState) return 'Waiting for places';
+
+  console.log(drizzle)
 
   // componentDidMount() => {
   //   const { drizzle } = this.props;

@@ -49,4 +49,9 @@ contract Certificate {
     }
     return veriState;
   }
+
+  function test() public pure returns(string memory){
+    string memory s = "test";
+    return s;
+  }
 }

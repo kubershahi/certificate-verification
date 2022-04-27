@@ -105,7 +105,7 @@ function Login() {
               type="file"
               name="certificate"
               id="myFile"
-              accept=".pdf/*"
+              accept=".pdf"
               onChange={handleCert}
             /> <br></br><br></br>
             <Button

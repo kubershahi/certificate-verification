@@ -92,6 +92,9 @@ function Upload(props) {
     setMsg("Uploaded Successfully!")
 
   };
+  function copyText(entryText){
+    navigator.clipboard.writeText(entryText)
+  }
 
   const areAllFieldsFilled = ((user.certificate.length !== 0) && (user.name !== "") && (user.batch !== ""));
 
@@ -143,13 +146,16 @@ function Upload(props) {
             >
               Submit
             </Button>
-            <br></br>
-            <br></br>
-            
             {msg}
-          </form>
-          <div>
-            <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot" />
+            <label>
+              <h3>Contract Details:</h3>
+            </label>
+            Batch: {user.batch}
+            <br></br>
+            Root: {user.merkleRoot}
+            </form>
+            <div>
+            <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot"/>
           </div>
         </div>
       </div>

@@ -2,10 +2,12 @@
 pragma solidity ^0.8.13;
 
 contract Certificate {
-  address private owner;
-  mapping(string => string) private merkleRoot;
+  address owner;
+  mapping(string => string) merkleRoot;
 
   event OwnerSet(address indexed oldOwner, address indexed newOwner);
+
+  event log(string s);
 
   modifier isOwner() {
     require(msg.sender == owner, "Caller is not owner");
@@ -32,11 +34,14 @@ contract Certificate {
     if (bytes(merkleRoot[batch]).length == 0) {
       merkleRoot[batch] = root;
       s = "merkleRoot Added";
+      emit log(s);
     } else {
       delete merkleRoot[batch];
       merkleRoot[batch] = root;
       s = "merkleRoot Added";
+      emit log(s);
     }
+
     return s;
   }
 

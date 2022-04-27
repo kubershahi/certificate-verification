@@ -2,10 +2,15 @@ import React from 'react'
 import './Login.scss'
 import { images } from "../../constants"
 
-function Login(drizzle) {
-  console.log(drizzle.drizzle)
-  var state = drizzle.drizzle.store.getState()
-  console.log(state.drizzleStatus.initialized)
+function Login(props) {
+  const {drizzle} = props;
+  console.log("props",props)
+  console.log(props.contracts)
+  // console.log(props.contractList)
+  // console.log(drizzle.drizzle)
+  // console.log(drizzle.drizzle.contractList)
+  // var state = drizzle.store.getState()
+  // console.log(state.drizzleStatus.initialized)
   return (
 
     // <div className="app__header app__flex">

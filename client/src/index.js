@@ -7,7 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 // Import drizzle, @drizzle/react-plugin, and your contract artifacts.
 import { Drizzle, generateStore } from "@drizzle/store";
-import { DrizzleContext } from "@drizzle/react-plugin";
+// import { DrizzleContext } from "@drizzle/react-plugin";
 import Certificate from "./artifacts/Certificate.json";
 
 // Setup the drizzle instance.

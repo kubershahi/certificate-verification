@@ -9,6 +9,8 @@ import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
 
 function Home(props) {
+  const {drizzle} = props;
+  console.log(drizzle)
   return (
     <BrowserRouter>
       <Router>
@@ -16,16 +18,16 @@ function Home(props) {
             <Navbar/>
                 <Switch>
                     <Route exact path="/upload">
-                          <Upload drizzle={props}/>
+                          <Upload />
                     </Route>
                     <Route exact path="/verify">
-                          <Verify drizzle={props}/>
+                          <Verify />
                     </Route>
                     <Route exact path="/share">
                           <Share/>
                     </Route>
                     <Route exact path="/login">
-                          <Login drizzle={props}/>
+                          <Login drizzle = {props}/>
                     </Route>
                     <Route path="/">
                         <Header/>
@@ -39,4 +41,4 @@ function Home(props) {
   )
 }
 
-export default Home
+export default Home;

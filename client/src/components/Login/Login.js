@@ -2,10 +2,21 @@ import React from 'react'
 import './Login.scss'
 import { images } from "../../constants"
 
-function Login(props) {
-  const {drizzle} = props;
-  console.log("props",props)
-  console.log(props.contracts)
+function Login(drizzle, drizzleState) {
+
+  
+
+  // componentDidMount() => {
+  //   const { drizzle } = this.props;
+  //   const contract = drizzle.contracts.SimpleStorage;
+
+  //   // get and save the key for the variable we are interested in
+  //   const dataKey = contract.methods["storedData"].cacheCall();
+  //   this.setState({ dataKey });
+  // }
+
+  // console.log("props",props)
+  // console.log(props.contracts)
   // console.log(props.contractList)
   // console.log(drizzle.drizzle)
   // console.log(drizzle.drizzle.contractList)

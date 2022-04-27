@@ -11,11 +11,14 @@ export default () => (
       if (!initialized) {
         return "Loading...";
       }
+
+      console.log(initialized)
       return (
         <div>
-        <AccountData drizzle={drizzle} drizzleState={drizzleState} accountIndex={0} units="ether" precision={3}/>
+          <h1>Hello</h1>
+        {/* <AccountData drizzle={drizzle} drizzleState={drizzleState} accountIndex={0} units="ether" precision={3}/>
         <ContractData drizzle={drizzle} drizzleState={drizzleState} contract="Hello" method="get"/>
-        <ContractForm drizzle={drizzle} contract="Hello" method="set" />
+        <ContractForm drizzle={drizzle} contract="Hello" method="set" /> */}
         </div>
       )
     }}

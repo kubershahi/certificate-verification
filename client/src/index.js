@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './Home';
+import App from './App';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -7,7 +8,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 // Import drizzle, @drizzle/react-plugin, and your contract artifacts.
 import { Drizzle, generateStore } from "@drizzle/store";
-// import { DrizzleContext } from "@drizzle/react-plugin";
+import { DrizzleContext } from "@drizzle/react-plugin";
 import Certificate from "./artifacts/Certificate.json";
 
 // Setup the drizzle instance.
@@ -19,9 +20,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <Router>
-        {/* <DrizzleContext.Provider drizzle= {drizzle}> */}
-          <Home drizzle= {drizzle}/>
-        {/* </DrizzleContext.Provider> */}
+        <DrizzleContext.Provider drizzle= {drizzle}>
+          <Home/>
+          {/* <App /> */}
+        </DrizzleContext.Provider>
       </Router>
   </React.StrictMode>
 );

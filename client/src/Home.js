@@ -8,25 +8,24 @@ import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
 
-function Home() {
+function Home(props) {
   return (
-    <>
     <BrowserRouter>
       <Router>
         <div className='app'>
             <Navbar/>
                 <Switch>
                     <Route exact path="/upload">
-                          <Upload/>
+                          <Upload drizzle={props}/>
                     </Route>
                     <Route exact path="/verify">
-                          <Verify/>
+                          <Verify drizzle={props}/>
                     </Route>
                     <Route exact path="/share">
                           <Share/>
                     </Route>
                     <Route exact path="/login">
-                          <Login/>
+                          <Login drizzle={props}/>
                     </Route>
                     <Route path="/">
                         <Header/>
@@ -37,7 +36,6 @@ function Home() {
         </div>
       </Router>
     </BrowserRouter>
-    </>
   )
 }
 

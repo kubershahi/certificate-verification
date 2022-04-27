@@ -19,9 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <Router>
-        <DrizzleContext.Provider drizzle= {drizzle}>
-          <Home/>
-        </DrizzleContext.Provider>
+        {/* <DrizzleContext.Provider drizzle= {drizzle}> */}
+          <Home drizzle= {drizzle}/>
+        {/* </DrizzleContext.Provider> */}
       </Router>
   </React.StrictMode>
 );

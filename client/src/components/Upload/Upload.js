@@ -9,11 +9,8 @@ import { Drizzle } from "@drizzle/store";
 // import SHA256 from 'crypto-js/sha256';
 // import { verifyProof } from "merkletree";
 import merkletree from "merkletree";
-import { DrizzleContext } from "@drizzle/react-plugin";
-import { newContextComponents } from "@drizzle/react-components";
-const { AccountData, ContractData, ContractForm } = newContextComponents;
 
-function Upload() {
+function Upload(props) {
 
   const [user, setUser] = useState({
     name: "",
@@ -70,8 +67,6 @@ function Upload() {
 
     e.preventDefault();
     const { name, batch, certificate, merkleRoot } = user;
-
-    // var state = Drizzle.state.getState()
 
     axios
       .post("http://localhost:4000/certificates/upload", {
@@ -142,20 +137,6 @@ function Upload() {
             >
               Submit
             </Button>
-            <DrizzleContext.Consumer>
-              {drizzleContext => {
-                const { drizzle, drizzleState, initialized } = drizzleContext;
-                if (!initialized) {
-                  return "Loading...";
-                }
-                return (
-                  <div>
-                    <AccountData drizzle={drizzle} drizzleState={drizzleState} accountIndex={0} units="ether" precision={3} />
-                    <ContractData drizzle={drizzle} drizzleState={drizzleState} contract="Certificate" method="test" />
-                  </div>
-                )
-              }}
-            </DrizzleContext.Consumer>
             {msg}
           </form>
         </div>

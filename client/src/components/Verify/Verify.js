@@ -68,6 +68,7 @@ function Login() {
       });
   }
 
+  const areAllFieldsFilled = ((user.fileHash !== "") && (user.name !== "") && (user.batch !== "") );
   return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
@@ -104,11 +105,13 @@ function Login() {
               type="file"
               name="certificate"
               id="myFile"
+              accept=".pdf/*"
               onChange={handleCert}
             /> <br></br><br></br>
             <Button
               type="submit"
               variant="contained"
+              disabled={!areAllFieldsFilled}
               onClick={PostData}
             >
               Submit

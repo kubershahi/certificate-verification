@@ -1,22 +1,34 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './Login.scss'
 import { images } from "../../constants"
 
-function Login(drizzle) {
+function Login(props) {
 
-  const loadDataOnlyOnce = () => {
-  console.log("loadDataOnlyOnce");
-  };
+  // useEffect(() => {
+  //   if (props) {
+  //     // do something
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (drizzle) {
-        // do something
-    }
-    }, []);
+  if (!props.drizzleState) return "Waiting for State Initialization";
+  const { drizzle, drizzleState } = props
 
-  if (!drizzle.drizzleState) return 'Waiting for places';
+  // console.log(drizzleState)
+  // console.log(drizzle)
 
-  console.log(drizzle)
+  // If Drizzle is initialized (and therefore web3, accounts and contracts), continue.
+  if (drizzleState.drizzleStatus.initialized) {
+    const contract = drizzle.contracts.Certificate;
+
+    // Declare this call to be cached and synchronized. We'll receive the store key for recall.
+    const dataKey = contract.methods.addRoot.cacheSend(("u","u"),{from: '0x96...'} )
+    
+
+    // Use the dataKey to display data from the store.
+    // if(!drizzleState.contracts.Certificate.getOwner[dataKey]) return "Waiting"
+    // console.log(drizzleState.contracts.Certificate.getOwner[dataKey].value)
+  }
+
 
   // componentDidMount() => {
   //   const { drizzle } = this.props;
@@ -49,7 +61,7 @@ function Login(drizzle) {
     //       <p className="p-text">See below</p>
     //     </div>
     //   </div>
-  
+
     // <img src={images.git} alt="profile_bg" /> 
     // </div>
 

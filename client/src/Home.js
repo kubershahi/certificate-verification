@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-rou
 import React from 'react'
 import { About, Footer, Header } from './container';
 import { Navbar } from './components'
-import Login from './components/Login/Login';
+import Contact from './components/Contact/contact';
 import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
@@ -34,8 +34,8 @@ export default () => (
                 <Route exact path="/share">
                   <Share drizzle={drizzle} drizzleState={drizzleState}  />
                 </Route>
-                <Route exact path="/login">
-                  <Login drizzle={drizzle} drizzleState={drizzleState} />
+                <Route exact path="/contact">
+                  <Contact drizzle={drizzle} drizzleState={drizzleState} />
                 </Route>
                 <Route path="/">
                   <Header />

@@ -59,7 +59,7 @@ function About() {
           />
           <CardContent>
               <Typography gutterBottom variant="h8" component="div">
-                <h3>Share</h3>
+                <h3>Contact Us</h3>
               </Typography>
           </CardContent>
       </CardActionArea>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './contact.scss'
+import './about.scss'
 import {images} from "../../constants" 
 import TextField from '@mui/material/TextField';
 

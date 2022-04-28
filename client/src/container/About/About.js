@@ -48,7 +48,7 @@ function About() {
       </Card>
       </a>
 
-      <a href='/share'>
+      <a href='/about'>
       <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
           <CardMedia

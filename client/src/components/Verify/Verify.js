@@ -51,7 +51,7 @@ function Verify(props) {
             }
           }
 
-          var root = getRoot(user.batch)
+          var [root, contractAddress] = getRoot(user.batch)
           // console.log(root)
 
           const verified = verifyProof(user.fileHash, root, proof)
@@ -68,6 +68,7 @@ function Verify(props) {
 
     // console.log(batch)
     let root;
+    let contractAddress;
 
     if (!props.drizzleState) return "Waiting for State Initialization";
     const { drizzle, drizzleState } = props
@@ -84,8 +85,10 @@ function Verify(props) {
       if(drizzleState.contracts.Certificate.getRoot[dataKey]){
         root = drizzleState.contracts.Certificate.getRoot[dataKey].value
       }
+
+      contractAddress = contract.address
     }
-    return root
+    return [root, contractAddress]
 
   }
 
@@ -111,11 +114,12 @@ function Verify(props) {
             }
           }
 
-          var root = getRoot(user.batch)
+          var [root, contractAddress] = getRoot(user.batch)
 
           const verified = verifyProof(user.fileHash, root, proof)
           if(verified){
             setSuccess("Verified Successfully!");
+            console.log("contractAddress: ", contractAddress)
             console.log("fileHash: ", user.fileHash)
             console.log("merkleProof: ", proof)
             console.log("merkleRoot: ", root)

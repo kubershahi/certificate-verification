@@ -82,7 +82,7 @@ function Upload(props) {
       const contract = drizzle.contracts.Certificate;
       const stackId = contract.methods.addRoot.cacheSend(batch, root, { from: account })
 
-      console.log(stackId)
+      // console.log(stackId)
       return stackId
 
     }
@@ -91,7 +91,7 @@ function Upload(props) {
 
   const getTransaction = (stackId) =>{
 
-    console.log(drizzleState.transactionStack[stackId])
+    // console.log(drizzleState.transactionStack[stackId])
 
     if (drizzleState.transactionStack[stackId]) {
       console.log("exists")

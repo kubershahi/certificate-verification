@@ -96,7 +96,8 @@ function Verify(props) {
     axios.get("http://localhost:4000/getCertificate/", { params: { "name": user.name, "batch": user.batch } })
       .then((response) => {
         if (response.data.length === 0) {
-          console.log("Can't Find the certificate.")
+          console.log("Can't find the certificate.")
+          setSuccess("Couldn't find the certificate.")
         } else {
           let userData = response.data[0]
           let certificates = userData["certificate"]
@@ -114,16 +115,20 @@ function Verify(props) {
 
           const verified = verifyProof(user.fileHash, root, proof)
           if(verified){
+            setSuccess("Verified Successfully!");
             console.log("fileHash: ", user.fileHash)
             console.log("merkleProof: ", proof)
             console.log("merkleRoot: ", root)
+          }
+          else{
+            setSuccess("Could not verify.");
           }
         }
       })
       .catch((error) => {
         console.log(error);
       });
-      setSuccess("Verified");
+      
 
   }
 
@@ -176,6 +181,7 @@ function Verify(props) {
               Submit
             </Button>
           </form>
+          <br></br>
           {success}
         </div>
       </div>

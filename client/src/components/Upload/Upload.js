@@ -182,12 +182,12 @@ function Upload(props) {
               Submit
             </Button>
             {msg}
-            <label>
+            {/* <label>
               <h3>Contract Details:</h3>
             </label>
             Batch: {user.batch}
             <br></br>
-            Root: {user.merkleRoot}
+            Root: {user.merkleRoot} */}
           </form>
           {/* <div>
             <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot" />

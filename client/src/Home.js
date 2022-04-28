@@ -40,7 +40,12 @@ export default () => (
                 <Route path="/">
                   <Header />
                   <About />
-                  <Footer />
+                  {/* <Footer /> */}
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
                 </Route>
               </Switch>
             </div>

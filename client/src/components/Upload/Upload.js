@@ -68,31 +68,66 @@ function Upload(props) {
     };
   };
 
+  const addRoot = (batch, root) => {
+    // console.log(batch,root)
 
+    if (!drizzleState) return "Waiting for State Initialization";
+    // console.log(drizzleState.drizzleStatus.initialized)
+
+    if (drizzleState.drizzleStatus.initialized) {
+
+      const account = drizzleState.accounts[0]
+      // console.log(account)
+
+      const contract = drizzle.contracts.Certificate;
+      const stackId = contract.methods.addRoot.cacheSend(batch, root, { from: account })
+
+      console.log(stackId)
+      return stackId
+
+    }
+
+  }
+
+  const getTransaction = (stackId) =>{
+
+    console.log(drizzleState.transactionStack[stackId])
+
+    if (drizzleState.transactionStack[stackId]) {
+      console.log("exists")
+      //   const txHash = drizzleState.transactionStack[stackId]
+
+      //   console.log(drizzleState.transactions[txHash].status)
+    }
+
+  }
+
+  var stackId
   const PostData = async (e) => {
 
     e.preventDefault();
     const { name, batch, certificate, merkleRoot } = user;
-
-    axios
-      .post("http://localhost:4000/certificates/upload", {
-        name,
-        batch,
-        certificate,
-        merkleRoot,
-      })
+    axios.post("http://localhost:4000/certificates/upload", {
+      name,
+      batch,
+      certificate,
+      merkleRoot,
+    })
       .then((res) => {
         console.log(res);
+        stackId = addRoot(user.batch, user.merkleRoot)
+
+        getTransaction(stackId)
+
       })
       .catch((error) => {
         console.log(error);
       });
-
     setUser({ ...user, name: "", batch: "", certificate: [] })
     setMsg("Uploaded Successfully!")
 
   };
-  function copyText(entryText){
+  function copyText(entryText) {
     navigator.clipboard.writeText(entryText)
   }
 
@@ -153,10 +188,10 @@ function Upload(props) {
             Batch: {user.batch}
             <br></br>
             Root: {user.merkleRoot}
-            </form>
-            <div>
-            <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot"/>
-          </div>
+          </form>
+          {/* <div>
+            <ContractForm drizzle={drizzle} contract="Certificate" method="addRoot" />
+          </div> */}
         </div>
       </div>
       <img src={images.node} alt="profile_bg" />

@@ -22,7 +22,7 @@ function Login() {
         <a href="mailto:kuber.shahi_asp22@ashoka.edu.in" className="p-text">kuber.shahi_asp22@ashoka.edu.in</a>
       </div>x
       <div className="app__footer-card">
-        <img src={images.mobile} alt="phone" />
+        <img src={images.email} alt="phone" />
         <a href="mailto:abhinav.nakarmi_asp22@ashoka.edu.in" className="p-text">abhinav.nakarmi_asp22@ashoka.edu.in</a>
       </div>
     </div>

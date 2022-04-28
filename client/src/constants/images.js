@@ -17,6 +17,7 @@ import redux from '../images/redux.png';
 import sass from '../images/sass.png';
 import typescript from '../images/typescript.png';
 import vue from '../images/vue.png';
+import code from '../images/code.png';
 
 import about01 from '../images/about01.png';
 import about02 from '../images/about02.png';
@@ -51,6 +52,7 @@ export default {
   mu5,
   node,
   python,
+  code,
   react,
   redux,
   sass,

@@ -9,10 +9,10 @@ function Login() {
   <div className="app__header app__flex">
       <div className="app__header-badge">
         <div className="badge-cmp app__flex">
-          {/* <div style={{ marginLeft: 20 }}>
-            <p className="p-text">Lets Meet?</p>
-            <h1 className="head-texter">Contact Us! </h1>
-          </div> */}
+          <div style={{ marginLeft: 20 }}>
+            <h3>aCRET issues and verifies blockchain-based records for academic credentials at Ashoka University. <br/> The open standard ensures the longevity and interoperability of digital records.</h3>
+          
+          </div>
         </div>
 
      <h3 className="head-text"><span>chat with us!</span></h3>

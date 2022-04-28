@@ -134,6 +134,7 @@ function Upload(props) {
   const areAllFieldsFilled = ((user.certificate.length !== 0) && (user.name !== "") && (user.batch !== ""));
 
   return (
+    <>
     <div className="app__header app__flex">
       <div className="app__header-badge">
         <div className="badge-cmp app__flex">
@@ -196,6 +197,11 @@ function Upload(props) {
       </div>
       <img src={images.node} alt="profile_bg" />
     </div>
+    <h3 className="head-text">Download <span> <a href= "https://drive.google.com/file/d/1FTr_ezrg_IhcT1-2BOFI3PtpyF4tZ6FI/view?usp=sharing">script.py</a>  </span> and run it on your certicates folder <br/> To Obtain Your <span> JSON</span> </h3>
+    <div className="code"> 
+      <img src={images.code} alt="profile_bg"/>
+    </div>
+    </>
   );
 }
 

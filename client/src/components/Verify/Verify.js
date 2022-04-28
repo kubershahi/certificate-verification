@@ -187,7 +187,6 @@ function Verify(props) {
       </div>
 
       <img src={images.react} alt="profile_bg" />
-
     </div>
   )
 }

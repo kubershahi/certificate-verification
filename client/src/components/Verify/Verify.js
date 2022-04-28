@@ -37,7 +37,7 @@ function Verify(props) {
     axios.get("http://localhost:4000/getCertificate/", { params: { "name": user.name, "batch": user.batch } })
       .then((response) => {
         if (response.data.length === 0) {
-          console.log("Can't Find the certificate.")
+          // console.log("Can't Find the certificate.")
         } else {
           let userData = response.data[0]
           let certificates = userData["certificate"]

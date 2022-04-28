@@ -10,7 +10,7 @@ import { verifyProof } from 'merkletree'
 let i;
 let fileData;
 
-function Login() {
+function Verify(props) {
 
   const [user, setUser] = useState({
     name: "",
@@ -35,12 +35,54 @@ function Login() {
     };
   };
 
+  function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+
+
+  const getRoot = (batch) => {
+
+    console.log(batch)
+    let root;
+
+    if (!props.drizzleState) return "Waiting for State Initialization";
+    const { drizzle, drizzleState } = props
+    console.log(drizzle)
+    console.log(drizzleState.drizzleStatus.initialized)
+    if (drizzleState.drizzleStatus.initialized) {
+
+          const contract = drizzle.contracts.Certificate;
+      
+          const dataKey = contract.methods.getRoot.cacheCall(batch)
+          console.log(dataKey)
+
+
+          var check = function(){
+            if(drizzleState.contracts.Certificate.getRoot[dataKey]){
+              root = drizzleState.contracts.Certificate.getRoot[dataKey].value
+            }
+            else {
+              setTimeout(check, 1000); // check again in a second
+            }
+        }
+
+          // var status = await drizzleState.contracts.Certificate.getRoot[dataKey] 
+
+          // console.log(drizzleState.contracts.Certificate.getRoot[dataKey]) 
+          // if(drizzleState.contracts.Certificate.getRoot[dataKey]){
+          //   console.log(drizzleState.contracts.Certificate.getRoot[dataKey].value)
+          //   return drizzleState.contracts.Certificate.getRoot[dataKey].value
+          // } 
+    }
+
+  }
+
   const PostData = async (e) => {
     e.preventDefault();
 
-    console.log(user.name)
-    console.log(user.batch)
-    console.log(user.fileHash)
+    // console.log(user.name)
+    // console.log(user.batch)
+    // console.log(user.fileHash)
 
     axios.get("http://localhost:4000/getCertificate/", { params: { "name": user.name, "batch": user.batch } })
       .then((response) => {
@@ -49,7 +91,7 @@ function Login() {
         } else {
           let userData = response.data[0]
           let certificates = userData["certificate"]
-          let root = userData["merkleRoot"]
+          // let root = userData["merkleRoot"]
           let cert_length = Object.keys(certificates).length
 
           for (i = 0; i < cert_length; i++) {
@@ -58,6 +100,9 @@ function Login() {
               var proof = certificates[i]["proof"]
             }
           }
+
+          var root = getRoot(user.batch)
+          console.log(root)
 
           const verified = verifyProof(user.fileHash, root, proof)
           console.log(verified)
@@ -68,7 +113,7 @@ function Login() {
       });
   }
 
-  const areAllFieldsFilled = ((user.fileHash !== "") && (user.name !== "") && (user.batch !== "") );
+  const areAllFieldsFilled = ((user.fileHash !== "") && (user.name !== "") && (user.batch !== ""));
   return (
     <div className="app__header app__flex">
       <div className="app__header-badge">
@@ -126,4 +171,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Verify

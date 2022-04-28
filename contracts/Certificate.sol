@@ -45,14 +45,9 @@ contract Certificate {
     return s;
   }
 
-  function verifyRoot(string memory batch, string memory root) public view returns (bool){
-    bool veriState;
-    if (keccak256(bytes(merkleRoot[batch])) == keccak256(bytes(root))) {
-        veriState = true;
-    } else {
-        veriState = false;
-    }
-    return veriState;
+  function getRoot(string memory batch) public view returns (string memory){
+    string memory root = merkleRoot[batch];
+    return root;
   }
 
   function test() public pure returns(string memory){

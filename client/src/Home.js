@@ -29,10 +29,10 @@ export default () => (
                   <Upload drizzle={drizzle} drizzleState={drizzleState} />
                 </Route>
                 <Route exact path="/verify">
-                  <Verify />
+                  <Verify drizzle={drizzle} drizzleState={drizzleState}  />
                 </Route>
                 <Route exact path="/share">
-                  <Share />
+                  <Share drizzle={drizzle} drizzleState={drizzleState}  />
                 </Route>
                 <Route exact path="/login">
                   <Login drizzle={drizzle} drizzleState={drizzleState} />

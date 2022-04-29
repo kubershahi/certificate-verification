@@ -16,9 +16,8 @@
   ![](https://img.shields.io/github/license/nikhildsahu/E-Certify.svg?style=for-the-badge)
   
  </div> -->
-
-
-# aCERT - Blockchain based records for academic credentials
+  
+<hr>
 
 We used MERN stack to build a fully functional website and on top of that, used Truffle, as the backend, to write and deploy smart contract on Ropsten Testnet and Drizzle, as the frontend, to get the smart contract state as a Redux store and interact with it. 
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img height=200px src="./client/src/images/logo.jpeg" >         
+  <img height=200px src="./client/src/images/logo.png" >         
 </p>
 
 <h1 align="center"> aCERT </h1>

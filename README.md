@@ -24,7 +24,7 @@ aCRET issues and verifies blockchain-based records for academic credentials. The
 ## Implementation Details
 We used MERN stack to build a fully functional website and on top of that, used Truffle, as the backend, to write and deploy smart contract on Ropsten Testnet and Drizzle, as the frontend, to get the smart contract state as a Redux store and interact with it. 
   
-See the project presentation @presentation.pdf in the main directory.
+See the project presentation **presentation.pdf** in the main directory.
   
 Project Video - https://drive.google.com/file/d/1Xmu4ZYmS4Af-V9ACE2b4Dcbouh_zPZpD/view?usp=sharing 
   

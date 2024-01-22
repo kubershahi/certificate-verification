@@ -27,9 +27,7 @@ We used the MERN stack to build a fully functional website and on top of that, u
 See the project presentation *presentation.pdf* in the main directory.
   
 Project Video - https://drive.google.com/file/d/1ZEA_O03Gq8QjcII3Z90umAkoO0gbd_Pn/view?usp=sharing
-  
-GitHub - https://github.com/abhinav-256/certificate-verification 
-  
+
 Ropsten Contract - https://ropsten.etherscan.io/address/0xc6a5f5815ac496d89fab3c8df805e4013e54989d 
   
   

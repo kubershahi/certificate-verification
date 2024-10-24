@@ -19,7 +19,7 @@
   
 
 ## About
-aCRET issues and verifies blockchain-based records for academic credentials. The open standard ensures public and secure verifiability of digital records.
+aCERT issues and verifies blockchain-based records for academic credentials. The open standard ensures public and secure verifiability of digital records.
   
 ## Implementation Details
 We used the MERN stack to build a fully functional website and on top of that, used Truffle, as the backend, to write and deploy smart contracts on Ropsten Testnet and Drizzle, as the frontend, to get the smart contract state as a Redux store and interact with it. 

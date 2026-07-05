@@ -1,93 +1,95 @@
 import './Home.scss';
-import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-router-dom';
-import React from 'react'
-import { About, Footer, Header } from './container';
-import { Navbar } from './components'
+import { Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { About, Header } from './container';
+import { Navbar } from './components';
 import Login from './components/About/about';
 import Upload from './components/Upload/Upload';
 import Verify from './components/Verify/Verify';
 import Share from './components/Share/Share';
-import { DrizzleContext } from "@drizzle/react-plugin";
-import {useEffect} from 'react'
+import WalletRequired from './components/WalletRequired/WalletRequired';
+import { DrizzleContext } from '@drizzle/react-plugin';
 
+function hasWalletProvider() {
+  return typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+}
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => (
-  <DrizzleContext.Consumer>
-    {drizzleContext => {
-      const { drizzle, drizzleState, initialized } = drizzleContext;
-      if (!initialized) {
-        return "Loading...";
-      }
+function HomeRoutes({ drizzle, drizzleState }) {
+  return (
+    <div className="app">
+      <Navbar />
+      <Switch>
+        <Route exact path="/upload">
+          <Upload drizzle={drizzle} drizzleState={drizzleState} />
+        </Route>
+        <Route exact path="/verify">
+          <Verify drizzle={drizzle} drizzleState={drizzleState} />
+        </Route>
+        <Route exact path="/share">
+          <Share drizzle={drizzle} drizzleState={drizzleState} />
+        </Route>
+        <Route exact path="/about">
+          <Login drizzle={drizzle} drizzleState={drizzleState} />
+        </Route>
+        <Route path="/">
+          <Header />
+          <About />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function HomeContent({ drizzleContext }) {
+  const { drizzle, drizzleState, initialized, initError } = drizzleContext;
+  const [walletAvailable, setWalletAvailable] = useState(hasWalletProvider);
+  const [loadTimedOut, setLoadTimedOut] = useState(false);
+
+  useEffect(() => {
+    setWalletAvailable(hasWalletProvider());
+  }, []);
+
+  useEffect(() => {
+    if (!walletAvailable || initialized) {
+      setLoadTimedOut(false);
+      return undefined;
+    }
+
+    const timer = setTimeout(() => setLoadTimedOut(true), 15000);
+    return () => clearTimeout(timer);
+  }, [walletAvailable, initialized]);
+
+  if (!walletAvailable) {
+    return <WalletRequired />;
+  }
+
+  if (initError) {
+    return (
+      <div className="app-loading">
+        <p>{initError}</p>
+      </div>
+    );
+  }
+
+  if (!initialized) {
+    if (loadTimedOut) {
       return (
-        <BrowserRouter>
-          <Router>
-            <div className='app'>
-              <Navbar />
-              <Switch>
-                <Route exact path="/upload">
-                  <Upload drizzle={drizzle} drizzleState={drizzleState} />
-                </Route>
-                <Route exact path="/verify">
-                  <Verify drizzle={drizzle} drizzleState={drizzleState}  />
-                </Route>
-                <Route exact path="/share">
-                  <Share drizzle={drizzle} drizzleState={drizzleState}  />
-                </Route>
-                <Route exact path="/about">
-                  <Login drizzle={drizzle} drizzleState={drizzleState} />
-                </Route>
-                <Route path="/">
-                  <Header />
-                  <About />
-                  {/* <Footer /> */}
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                </Route>
-              </Switch>
-            </div>
-          </Router>
-        </BrowserRouter>
+        <div className="app-loading">
+          <p>Still connecting to your wallet...</p>
+          <p>Open MetaMask, unlock it, switch to Sepolia, then refresh this page.</p>
+        </div>
       );
-    }}
-  </DrizzleContext.Consumer>
-)
+    }
+    return <div className="app-loading">Loading...</div>;
+  }
 
+  return <HomeRoutes drizzle={drizzle} drizzleState={drizzleState} />;
+}
 
-// function Home(props) {
-//   const {drizzle} = props;
-//   console.log(drizzle)
-//   return (
-    // <BrowserRouter>
-    //   <Router>
-    //     <div className='app'>
-    //         <Navbar/>
-    //             <Switch>
-    //                 <Route exact path="/upload">
-    //                       <Upload />
-    //                 </Route>
-    //                 <Route exact path="/verify">
-    //                       <Verify />
-    //                 </Route>
-    //                 <Route exact path="/share">
-    //                       <Share/>
-    //                 </Route>
-    //                 <Route exact path="/login">
-    //                       <Login drizzle = {props}/>
-    //                 </Route>
-    //                 <Route path="/">
-    //                     <Header/>
-    //                     <About/>
-    //                     <Footer/>
-    //                 </Route>
-    //             </Switch>
-    //     </div>
-    //   </Router>
-    // </BrowserRouter>
-//   )
-// }
-
-// export default Home;
+export default function Home() {
+  return (
+    <DrizzleContext.Consumer>
+      {(drizzleContext) => <HomeContent drizzleContext={drizzleContext} />}
+    </DrizzleContext.Consumer>
+  );
+}

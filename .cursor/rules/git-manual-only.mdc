@@ -1,0 +1,12 @@
+---
+description: Never auto-commit or push — git changes require explicit user approval
+alwaysApply: true
+---
+
+# Git: manual commits only
+
+Do NOT run `git commit`, `git push`, `git add` + commit, or any git command that changes repository history unless the user explicitly asks in the current message.
+
+- Making file edits is fine; leave changes unstaged or staged only if the user asked to stage.
+- If you believe a commit is needed, tell the user what to commit and stop — do not commit yourself.
+- Do not push to remote unless explicitly requested.

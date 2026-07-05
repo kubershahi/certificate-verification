@@ -2,6 +2,19 @@
     background-color: var(--primary-color);
     font-family: var(--font-base);
   }
+
+  .app-loading {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    color: var(--black-color);
+    font-family: var(--font-base);
+  }
   
   .app__whitebg {
     background-color: var(--white-color);

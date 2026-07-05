@@ -4985,6 +4985,12 @@
       "links": {},
       "address": "0x93dAe252FFa5EAf7be22a0F9FCd6F029275E2101",
       "transactionHash": "0x463d5d0ede3cb736743adf356d6deb0281677d3a609f8cfb3f2397c0d43896f6"
+    },
+    "11155111": {
+      "events": {},
+      "links": {},
+      "address": "0x3da3AA0f22F8c341472B82121662D5c4f81cDa0e",
+      "transactionHash": "0x9db47c41e50fced4d00c2289cbb261410f58963d1a90173386b9a6f4d232cfde"
     }
   },
   "schemaVersion": "3.4.7",

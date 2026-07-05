@@ -1,0 +1,107 @@
+.wallet-required {
+  min-height: 100vh;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: var(--font-base);
+}
+
+.wallet-required__card {
+  max-width: 480px;
+  background: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.wallet-required__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.wallet-required__title {
+  font-size: 1.75rem;
+  color: var(--black-color);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.wallet-required__lead {
+  color: var(--gray-color);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.wallet-required__steps {
+  text-align: left;
+  background: var(--primary-color);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wallet-required__step {
+  color: var(--black-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.wallet-required__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.wallet-required__btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.1s;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &--primary {
+    background: var(--secondary-color);
+    color: var(--white-color);
+  }
+
+  &--secondary {
+    background: var(--primary-color);
+    color: var(--black-color);
+    border: 2px solid var(--lightGray-color);
+  }
+}
+
+.wallet-required__other {
+  font-size: 0.85rem;
+  color: var(--gray-color);
+  margin: 0;
+
+  code {
+    background: var(--lightGray-color);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.8em;
+  }
+}

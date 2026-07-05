@@ -17,3 +17,17 @@
   margin: 0;
   scroll-behavior: smooth;
 }
+
+.app-loading {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--black-color);
+  font-family: var(--font-base);
+  background: var(--primary-color);
+}
